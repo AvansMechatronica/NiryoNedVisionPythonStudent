@@ -3,7 +3,7 @@ import keyboard  # load keyboard package
 
 from pyniryo2 import *
 from libraries.vision.markers_detection import *
-from libraries.vision.usbCamera import usbCamera
+from libraries.vision.dahengCamera import dahengCamera
 import libraries.niryo.NiryoSupport as Niryo
 import cv2
 import time
@@ -12,7 +12,7 @@ from libraries.vision.enums import *
 
 camera_index = 0
 
-camera = usbCamera(camera_index, rotate_frame = True)
+camera = dahengCamera(camera_index, rotate_frame = True)
 def takePhoto():
     image = camera.take_photo()
     result, crop_image = extract_img_markers(image, workspace_ratio=1.0)
@@ -73,22 +73,22 @@ def main():
     robot.arm.move_to_home_pose()
     robot.arm.set_learning_mode(True)
 
-    print("Move niryoNED calibration tool to marker 1 and press Enter(in stream/marker window)")
+    print("Move niryoNED calibration-tool to marker 1 and press Enter(in stream/marker window)")
     cv2.waitKey(0)
     pose1 = robot.arm.get_pose()
     print(pose1)
 
-    print("Move niryoNED calibration tool to marker 2 and press Enter(in stream/marker window)")
+    print("Move niryoNED calibration-tool to marker 2 and press Enter(in stream/marker window)")
     cv2.waitKey(0)
     pose2 = robot.arm.get_pose()
     print(pose2)
 
-    print("Move niryoNED calibration tool to marker 3 and press Enter(in stream/marker window)")
+    print("Move niryoNED calibration-tool to marker 3 and press Enter(in stream/marker window)")
     cv2.waitKey(0)
     pose3 = robot.arm.get_pose()
     print(pose3)
 
-    print("Move niryoNED calibration tool to marker 4 and press Enter(in stream/marker window)")
+    print("Move niryoNED calibration-tool to marker 4 and press Enter(in stream/marker window)")
     cv2.waitKey(0)
     pose4 = robot.arm.get_pose()
     print(pose4)
@@ -101,7 +101,7 @@ def main():
 
     robot.tool.enable_tcp(False)
 
-    print("calibartion done")
+    print("Callibartion done")
 
     camera.end();
     robot.end()

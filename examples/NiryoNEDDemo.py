@@ -43,13 +43,12 @@ def main():
     print("Open gripper")
 
 
-    print("Move NiryoNED 0.2 mm down")
+    print("Move NiryoNED 0.2 m down")
     new_pose = home_pose.copy_with_offsets(z_offset=-0.2)
     robot.arm.move_pose(new_pose)
     time.sleep(2)
     print("Move NiryoNED to home position")
     robot.arm.move_pose(home_pose)
-
     robot.end()
 
     print("Ready")
